@@ -1,14 +1,17 @@
 <?php
+
 namespace App\Http\Controllers\Api;
-use Illuminate\Http\Request; 
-use App\Http\Controllers\Controller; 
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth; 
 use Validator;
 
 use App\User; 
 use App\Role;
 
-class AuthController extends Controller {
+class AuthController extends Controller
+{
     //retorno caso sucesso ou falha
     private $successStatusCode = 200;
     private $failStatusCode = 401;
@@ -75,7 +78,4 @@ class AuthController extends Controller {
            return response()->json(['data'=>'Unauthorised'], $this->failStatusCode); 
         } 
     }
-
-
-
-} 
+}
