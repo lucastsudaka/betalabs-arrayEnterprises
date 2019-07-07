@@ -7,6 +7,7 @@
 
 # Instalação
 Configure o arquivo .env de acordo com o DB Mysql/Mariadb que deseja utilizar  
+
 Utilize a collation  "utf8mb4_unicode_ci"  
 
     DB_CONNECTION=mysql
@@ -16,6 +17,8 @@ Utilize a collation  "utf8mb4_unicode_ci"
     DB_USERNAME=root
     DB_PASSWORD=
 
+Instale as dependências:  
+`composer install  `
 Execute os comandos do Artisan:  
 `php artisan migrate` // tabelas necessárias para o funcionamento  
 `php artisan passport:install` // para os tokens internos do laravel passport   
