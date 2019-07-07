@@ -10,9 +10,9 @@ Route::prefix('v1')->group(function(){
          * 
          */
         // login
-        Route::post('auth/login', 'api\AuthController@login');
+        Route::post('auth/login', 'Api\AuthController@login');
         // registrar
-        Route::post('auth/register', 'api\AuthController@register');
+        Route::post('auth/register', 'Api\AuthController@register');
         
         
         /**
@@ -23,11 +23,11 @@ Route::prefix('v1')->group(function(){
         // Ações do usuário logado (currentUser)
         Route::group(['middleware' => ['check.role:basic,admin']], function() {
             // retornar atual usuário
-            Route::get('currentUser', 'api\CurrentUserController@index');
+            Route::get('currentUser', 'Api\CurrentUserController@index');
             // atualizar o usuário
-            Route::put('currentUser', 'api\CurrentUserController@update');
+            Route::put('currentUser', 'Api\CurrentUserController@update');
             // atualizar a foto de perfil
-            Route::post('currentUser/photo', 'api\CurrentUserController@uploadPhoto');
+            Route::post('currentUser/photo', 'Api\CurrentUserController@uploadPhoto');
 
 
         });
@@ -38,11 +38,11 @@ Route::prefix('v1')->group(function(){
          * Comentários -> Utilizando resource
          * 
          */   
-        Route::resource('comments','api\CommentController')->only([    
+        Route::resource('comments','Api\CommentController')->only([    
             'index', 'show'
         ]);
         Route::group(['middleware' => ['check.role:basic,admin']], function() {
-            Route::resource('comments','api\CommentController')->only([      
+            Route::resource('comments','Api\CommentController')->only([      
                 'store', 'update', 'destroy'
             ]);
         }); 
