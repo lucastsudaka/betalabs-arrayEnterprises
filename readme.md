@@ -58,6 +58,6 @@ Realizar cadastro em `public/api/v1/auth/register` ,  um **bearer token** será 
 
 
 # Incompleto
-O suporte a UUID foi adicionado como extra, apenas para demonstração.
-Completar validação de sessão (autenticação), funcionando parcialmente .
-Testes de unidade
+O suporte a UUID foi adicionado como extra, apenas para demonstração.  
+Completar validação de sessão (autenticação), funcionando parcialmente .  
+Testes de unidade  
