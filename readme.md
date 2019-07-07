@@ -29,7 +29,7 @@ Seed para criação de dados  de exemplo total: "usuários" que possuem "coment�
 
 Com o Postman ou outro programa para teste de API:  
 Realizar cadastro em `public/api/v1/auth/register` ,  um **bearer token** será retornado, este é necessário para as ações  que requerem login.
-![](https://i.imgur.com/sdblscG.jpg)  
+![](https://i.imgur.com/9Pg4xdd.jpg)  
   
     
 ![](https://i.imgur.com/k0Vf1A5.jpg)  
