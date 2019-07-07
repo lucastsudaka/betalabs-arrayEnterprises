@@ -32,7 +32,7 @@ Utilize a collation  "utf8mb4_unicode_ci"
     DB_PASSWORD=
 
 Instale as dependências:  
-`composer install  `
+`composer install  `  
 Execute os comandos do Artisan:  
 `php artisan migrate` // tabelas necessárias para o funcionamento  
 `php artisan passport:install` // para os tokens internos do laravel passport   
