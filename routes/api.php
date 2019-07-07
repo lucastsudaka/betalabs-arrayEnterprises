@@ -2,27 +2,45 @@
 
 use Illuminate\Http\Request;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
+// v1 da nossa API.
 Route::prefix('v1')->group(function(){
-        Route::post('auth/login', 'api\auth\AuthController@login');
-        Route::post('auth/register', 'api\auth\AuthController@register');
-        Route::group(['middleware' => 'auth:api'], function(){
-            Route::post('getUser', 'api\auth\AuthController@getUser');
+        /**
+         * 
+         * Auth & usuario logado (current user)
+         * 
+         */
+        Route::post('auth/login', 'api\AuthController@login');
+        Route::post('auth/register', 'api\AuthController@register');
+        
+        // Ações do usuário logado (currentUser)
+        Route::group(['middleware' => ['check.role:basic,admin']], function() {
+            Route::get('currentUser', 'api\CurrentUserController@index');
+            Route::put('currentUser', 'api\CurrentUserController@update');
+            Route::post('currentUser/photo', 'api\CurrentUserController@uploadPhoto');
+
+          #  Route::post('auth/currentUser/profileImage', 'api\AuthController@updateProfileImage');
+
         });
+        
+        
+        /**
+         * 
+         * Comentários
+         * 
+         */   
+        Route::resource('comments','api\CommentController')->only([
+            'index', 'show'
+        ]);
+        Route::group(['middleware' => ['check.role:basic,admin']], function() {
+            Route::resource('comments','api\CommentController')->only([
+                'store', 'update', 'destroy'
+            ]);
+        }); 
+        
+
+
+
 });
 
 
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
